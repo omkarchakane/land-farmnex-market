@@ -42,7 +42,12 @@ export const AuthProvider = ({ children }) => {
       setUser(res.data.user);
       return { success: true, user: res.data.user };
     } catch (err) {
-      return { success: false, msg: err.response?.data?.msg || 'Login failed' };
+      console.error("Login Error:", err);
+      let msg = 'Login failed';
+      if (err.response?.data?.msg) msg = err.response.data.msg;
+      else if (err.message === 'Network Error') msg = 'Server unreachable (Check Backend)';
+      else if (err.status === 502) msg = 'Server starting up... try again in 1 min';
+      return { success: false, msg };
     }
   };
 
