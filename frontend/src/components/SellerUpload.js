@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { API_URL } from '../config';
 
 const SellerUpload = ({ onUpload }) => {
   const [formData, setFormData] = useState({
@@ -71,7 +72,7 @@ const SellerUpload = ({ onUpload }) => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.post('http://localhost:5000/api/listings', data, {
+      await axios.post(`${API_URL}/api/listings`, data, {
         headers: { 'x-auth-token': token }
       });
       

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuth } from "../context/AuthContext";
 import InquiryForm from "./InquiryForm";
+import { API_URL } from "../config";
 
 const BuyerListings = () => {
   const [listings, setListings] = useState([]);
@@ -32,7 +33,7 @@ const BuyerListings = () => {
 
   const fetchListings = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/listings');
+      const res = await axios.get(`${API_URL}/api/listings`);
       setListings(res.data);
       setFilteredListings(res.data);
     } catch (err) {
@@ -47,7 +48,7 @@ const BuyerListings = () => {
       return "https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60";
     }
     const filename = imagePath.split("/uploads/")[1] || imagePath;
-    return `http://localhost:5000/uploads/${filename}`;
+    return `${API_URL}/uploads/${filename}`;
   };
 
   const goToNext = (listingId) => {

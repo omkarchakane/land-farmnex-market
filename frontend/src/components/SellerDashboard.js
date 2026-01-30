@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import SellerUpload from './SellerUpload';
 
+import { API_URL } from '../config';
+
 const SellerDashboard = () => {
   const [listings, setListings] = useState([]);
   const [soldListings, setSoldListings] = useState([]);
@@ -27,8 +29,8 @@ const SellerDashboard = () => {
 
       const config = { headers: { 'x-auth-token': token } };
      
-      const activeRes = await axios.get('http://localhost:5000/api/listings/seller/me', config);
-      const soldRes = await axios.get('http://localhost:5000/api/listings/seller/me/sold', config);
+      const activeRes = await axios.get(`${API_URL}/api/listings/seller/me`, config);
+      const soldRes = await axios.get(`${API_URL}/api/listings/seller/me/sold`, config);
       
       setListings(activeRes.data || []);
       setSoldListings(soldRes.data || []);
@@ -43,7 +45,7 @@ const SellerDashboard = () => {
     if (!window.confirm('Are you sure you want to mark this property as sold?')) return;
     
     try {
-      await axios.put(`http://localhost:5000/api/listings/${listingId}/sold`, {}, {
+      await axios.put(`${API_URL}/api/listings/${listingId}/sold`, {}, {
         headers: { 'x-auth-token': localStorage.getItem('token') }
       });
       fetchListings(); 
