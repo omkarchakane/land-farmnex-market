@@ -1,11 +1,13 @@
 import React from 'react';
 import axios from 'axios';
 
+import { API_URL } from '../config';
+
 const ListingsTable = ({ listings, onUpdate }) => {
   const handleApprove = async (id) => {
     try {
       await axios.put(
-        `${process.env.REACT_APP_API_URL}/admin/listings/${id}/approve`,
+        `${API_URL}/api/admin/listings/${id}/approve`,
         {},
         { headers: { 'x-auth-token': localStorage.getItem('adminToken') } }
       );
@@ -18,7 +20,7 @@ const ListingsTable = ({ listings, onUpdate }) => {
   const handleReject = async (id) => {
     try {
       await axios.put(
-        `${process.env.REACT_APP_API_URL}/admin/listings/${id}/reject`,
+        `${API_URL}/api/admin/listings/${id}/reject`,
         {},
         { headers: { 'x-auth-token': localStorage.getItem('adminToken') } }
       );
