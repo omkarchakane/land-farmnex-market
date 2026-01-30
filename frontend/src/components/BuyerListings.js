@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import InquiryForm from "./InquiryForm";
 import { API_URL } from "../config";
@@ -287,12 +288,12 @@ const BuyerListings = () => {
             </div>
 
             <div style={{ display: "flex", gap: "1rem" }}>
-              <a href="/login" className="btn btn-primary btn-block">
+              <Link to="/login" className="btn btn-primary btn-block">
                 Sign In
-              </a>
-              <a href="/register" className="btn btn-secondary btn-block">
+              </Link>
+              <Link to="/register" className="btn btn-secondary btn-block">
                 Create Account
-              </a>
+              </Link>
             </div>
           </div>
         </div>
