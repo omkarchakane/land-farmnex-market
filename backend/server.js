@@ -12,8 +12,8 @@ app.use(cors({
   origin: [
     'http://localhost:3000', 
     process.env.FRONTEND_URL, 
-    'https://farm-nex-app-p8g9.onrender.com' // Fallback for your specific URL
-  ].filter(Boolean), // Remove undefined/null
+    'https://farm-nex-app-p8g9.onrender.com' 
+  ].filter(Boolean),
   credentials: true
 }));
 

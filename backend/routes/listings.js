@@ -14,21 +14,19 @@ const upload = multer({
   limits: { files: 3, fileSize: 5 * 1024 * 1024 }
 });
 
-// ✅ UPDATED POST - Save Google Maps URL
 router.post('/', protect, upload.array('images', 3), async (req, res) => {
   try {
     const listingData = {
       sellerId: req.user._id,
       title: req.body.title,
-      city: req.body.city,        // ✅ Direct city field
+      city: req.body.city,        
       price: Number(req.body.price),
       contact: req.body.contact,
       info: req.body.info,
-      googleMapUrl: req.body.googleMapUrl,  // ✅ NEW Google Maps URL
+      googleMapUrl: req.body.googleMapUrl, 
       status: 'pending'
     };
 
-    // ✅ Save images
     if (req.files) {
       listingData.images = req.files.map(f => `/uploads/${f.filename}`);
     }
@@ -41,7 +39,6 @@ router.post('/', protect, upload.array('images', 3), async (req, res) => {
   }
 });
 
-// ✅ GET all listings (unchanged)
 router.get('/', async (req, res) => {
   try {
     const { city } = req.query;
@@ -57,7 +54,6 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ Seller active listings
 router.get('/seller/me', protect, async (req, res) => {
   try {
     const listings = await Listing.find({ 
@@ -77,7 +73,6 @@ router.get('/seller/me', protect, async (req, res) => {
   }
 });
 
-// ✅ Seller sold listings
 router.get('/seller/me/sold', protect, async (req, res) => {
   try {
     const listings = await Listing.find({ 
@@ -93,7 +88,6 @@ router.get('/seller/me/sold', protect, async (req, res) => {
   }
 });
 
-// ✅ Mark as SOLD (unchanged)
 router.put('/:id/sold', protect, async (req, res) => {
   try {
     const listing = await Listing.findOne({ 
