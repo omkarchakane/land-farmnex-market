@@ -95,6 +95,12 @@ const Login = () => {
         <div style={{ textAlign: 'center', marginTop: '1.5rem', color: 'var(--color-text-muted)' }}>
           Don't have an account? <Link to="/register" style={{ color: 'var(--color-primary)', fontWeight: '600' }}>Register now</Link>
         </div>
+
+        {/* DEBUG SECTION */}
+        <div style={{ marginTop: '2rem', padding: '1rem', background: '#f8fafc', fontSize: '0.75rem', color: '#64748b', borderRadius: '4px' }}>
+          <strong>Debug Info:</strong><br />
+          API Connected to: <code>{require('../config').API_URL}</code>
+        </div>
       </div>
     </div>
   );
