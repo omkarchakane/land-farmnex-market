@@ -65,7 +65,7 @@ const SellerDashboard = () => {
 
   return (
     <div className="dashboard-grid">
-      {/* Sidebar / Controls */}
+    
       <div className="card" style={{ height: 'fit-content' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div style={{ 
@@ -101,10 +101,9 @@ const SellerDashboard = () => {
         </button>
       </div>
 
-      {/* Main Content */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         
-        {/* Upload Form (Only on Active Tab) */}
+     
         {activeTab === 'active' && (
           <div className="card">
             <h3 className="card-title">
@@ -113,8 +112,6 @@ const SellerDashboard = () => {
             <SellerUpload onUpload={fetchListings} />
           </div>
         )}
-
-        {/* Listings List */}
         <div className="card">
           <h3 className="card-title">
             {activeTab === 'active' ? 'Your Active Properties' : 'Sales History'}

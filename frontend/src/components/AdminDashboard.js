@@ -13,15 +13,6 @@ const icon = L.icon({
 });
 
 const AdminDashboard = ({ listings = [], onClose }) => {
-  // If listings is undefined or empty, handle gracefully or use props differently if it was meant to be MapView
-  // Based on previous file content, this file seemed to be named AdminDashboard but content was MapView? 
-  // Wait, let me double check the file I read earlier. 
-  // Ah, the file I read earlier for AdminDashboard.js had content `import React from 'react'; ... const MapView = ... export default MapView;` 
-  // It seems AdminDashboard might have been copy-pasted wrong or I am looking at MapView content inside AdminDashboard file?
-  // Let's assume the user wants a real Admin Dashboard or if this was just the MapView being used AS Admin Dashboard.
-  // The user prompt said: "use real world farm application theme or ui... without changing 0% of code logic".
-  // The code logic in d:\land-farm-market\frontend\src\components\AdminDashboard.js WAS 'MapView'. 
-  // So I must preserve that logic, but style it.
   
   const center = listings?.[0]?.location || [20.5937, 78.9629];
 

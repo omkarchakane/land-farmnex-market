@@ -151,7 +151,7 @@ const BuyerListings = () => {
               return (
                 <div key={listing._id} className="listing-card">
                   
-                  {/* Image Carousel */}
+                 
                   <div className="listing-image-container">
                     {listing.images?.map((image, imageIndex) => (
                       <img
@@ -175,7 +175,7 @@ const BuyerListings = () => {
                       />
                     )}
 
-                    {/* Navigation Arrows */}
+                   
                     {totalImages > 1 && (
                       <>
                         <button
@@ -210,7 +210,6 @@ const BuyerListings = () => {
                     )}
                   </div>
 
-                  {/* Content */}
                   <div className="listing-content">
                     <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--color-text-main)' }}>
                       {listing.title || "Untitled Property"}
@@ -265,7 +264,7 @@ const BuyerListings = () => {
         )}
       </div>
 
-      {/* Login Warning Modal */}
+     
       {showLoginWarning && warningListing && (
         <div className="modal-overlay" onClick={() => setShowLoginWarning(false)}>
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>

@@ -38,8 +38,6 @@ const SellerUpload = ({ onUpload }) => {
     if (url.includes('google.com/maps')) {
       const coords = extractCoordsFromUrl(url);
       if (coords) {
-        // Optional feedback could be a toast, but keeping it simple for now
-        // console.log(`Found coords: ${coords.lat}, ${coords.lng}`);
       }
     }
   };
