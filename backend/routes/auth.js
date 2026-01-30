@@ -16,10 +16,18 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   const { username, password } = req.body;
   const user = await User.findOne({ username });
-  if (user && await user.matchPassword(password)) {
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
-    res.json({ token, user: { id: user._id, username, role: user.role } });
-  } else res.status(401).json({ msg: 'Invalid credentials' });
+  
+  if (!user) {
+    return res.status(401).json({ msg: 'Debug: User not found' });
+  }
+
+  const isMatch = await user.matchPassword(password);
+  if (!isMatch) {
+    return res.status(401).json({ msg: 'Debug: Password incorrect' });
+  }
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: '30d' });
+  res.json({ token, user: { id: user._id, username, role: user.role } });
 });
 
 module.exports = router;
