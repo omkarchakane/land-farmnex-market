@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, Link } from 'react-router-dom';
 import { useAuth } from './context/AuthContext';
 import BuyerListings from './components/BuyerListings';
 import SellerDashboard from './components/SellerDashboard';
@@ -39,32 +39,32 @@ function AppContent() {
     <>
       <nav className="navbar">
         <div className="navbar-container">
-          <a href="/" className="navbar-brand">
+          <Link to="/" className="navbar-brand">
             <i className="fas fa-leaf"></i>
             FarmNex Market
-          </a>
+          </Link>
           <div className="navbar-nav">
             {!user ? (
               <>
-                <a href="/login" className="btn btn-primary">
+                <Link to="/login" className="btn btn-primary">
                   <i className="fas fa-sign-in-alt"></i> Login
-                </a>
-                <a href="/register" className="btn btn-secondary">
+                </Link>
+                <Link to="/register" className="btn btn-secondary">
                   <i className="fas fa-user-plus"></i> Register
-                </a>
+                </Link>
               </>
             ) : (
               <>
-                <a href="/listings" className="nav-link">Listings</a>
+                <Link to="/listings" className="nav-link">Listings</Link>
                 {user.role === 'seller' && (
-                  <a href="/seller" className="nav-link">
+                  <Link to="/seller" className="nav-link">
                     <i className="fas fa-tractor"></i> Dashboard
-                  </a>
+                  </Link>
                 )}
                 {user.role === 'admin' && (
-                  <a href="/admin" className="nav-link">
+                  <Link to="/admin" className="nav-link">
                     <i className="fas fa-shield-alt"></i> Admin
-                  </a>
+                  </Link>
                 )}
                 <button onClick={logout} className="btn btn-danger">
                   <i className="fas fa-sign-out-alt"></i> Logout
